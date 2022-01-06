@@ -1,10 +1,9 @@
 const fs = require("fs");
 
-const addMovie = (movieArr, movieObj) => {
+const addMovie = async (collection, movieObj) => {
     try {
-        movieArr.push(movieObj);
-        const stringyObj = JSON.stringify(movieArr);
-        fs.writeFileSync('./storage.json', stringyObj);
+        await collection.insertOne(movieObj);
+        console.log(`Successfully added ${movieObj.title}.`);
         
     } catch (error) {
         console.log(error);
