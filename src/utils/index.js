@@ -10,9 +10,16 @@ const addMovie = async (collection, movieObj) => {
     }
 };
 
-const listMovies = () => {
+const listMovies = async (collection) => {
     try {
         
+        // console.log(await collection.find({}));
+
+        const cursor = await collection.find({});
+        const movieArr = await cursor.toArray();
+        await collection.find({}).toArray();
+        console.log(movieArr);
+
     } catch (error) {
         console.log(error);
     }

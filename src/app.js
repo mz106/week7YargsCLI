@@ -14,7 +14,9 @@ const app = async (args) => {
                 console.log("app.js hit")
                 await connection(addMovie, movieObj);
                 console.log("after connection")
-            }    
+            } else if (command === "list") {
+                await connection(listMovies);
+            }
             // } else if (process.argv[2] === 'list') {
             //     listMovies();
             // } else if (process.argv[2] === 'update') {
