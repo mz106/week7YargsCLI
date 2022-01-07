@@ -1,9 +1,11 @@
 const fs = require("fs");
+const Movie = require("../models/models");
 
-const addMovie = async (collection, movieObj) => {
+const addMovie = async (movieObj) => {
     try {
-        await collection.insertOne(movieObj);
-        console.log(`Successfully added ${movieObj.title}.`);
+        const newMovie = new Movie(movieObj);
+        await newMovie.save();
+        console.log("new movie: ", newMovie);
         
     } catch (error) {
         console.log(error);
